@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Samarqand & IT | Creativity meets Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0a0f2c 0%, #0b1525 100%);
+            color: #f0f3fa;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+
+        /* container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* navigation */
+        .navbar {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(59,130,246,0.2);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c084fc, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(95deg, #3b82f6, #8b5cf6);
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(59,130,246,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #3b82f6;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: rgba(59,130,246,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* hero */
+        .hero {
+            padding: 80px 0 60px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 260px;
+        }
+        .hero-badge {
+            background: rgba(59,130,246,0.2);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #a5f3fc;
+            margin-bottom: 24px;
+            border-left: 3px solid #3b82f6;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(120deg, #f0f9ff, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #cbd5e6;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #60a5fa;
+            display: block;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+        }
+
+        /* services section */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 48px;
+        }
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .service-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 32px 24px;
+            width: 280px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59,130,246,0.2);
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 30px -10px rgba(59,130,246,0.2);
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+        .service-card p {
+            color: #b9c3db;
+            font-size: 0.95rem;
+        }
+
+        /* counter section */
+        .stats-showcase {
+            background: linear-gradient(115deg, #0f172a, #111827);
+            border-radius: 48px;
+            padding: 50px 30px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            text-align: center;
+            border: 1px solid #1e293b;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+        .stat-item p {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 32px;
+            padding: 60px 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid rgba(59,130,246,0.2);
+            padding: 32px 0;
+            text-align: center;
+            color: #7e8aa2;
+        }
+
+        /* Responsive */
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="logo">🇺🇿 SAMIT</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#stats">Facts</a>
+                <a href="#contact">Connect</a>
+            </div>
+            <a href="#contact" class="btn btn-outline" style="padding: 8px 24px;">Let's Talk</a>
+        </nav>
+
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">✨ From Samarkand to the world</div>
+                <h1>Code that connects <span class="gradient-text">cultures</span> & creativity</h1>
+                <p>Blending clean code with timeless design. Full-stack magic from the heart of Uzbekistan.</p>
+                <a href="#contact" class="btn">Start a project →</a>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-number">3+</span> Years exp</div>
+                    <div class="stat"><span class="stat-number">5</span> Languages</div>
+                    <div class="stat"><span class="stat-number">20+</span> Projects</div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg width="300" height="260" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="160" r="90" fill="url(#grad1)" fill-opacity="0.2" stroke="#3b82f6" stroke-width="2"/>
+                    <path d="M200 80 L230 130 L280 140 L245 180 L255 240 L200 210 L145 240 L155 180 L120 140 L170 130 L200 80Z" fill="#60a5fa" fill-opacity="0.8" stroke="#c084fc" stroke-width="1.5"/>
+                    <circle cx="175" cy="145" r="4" fill="white"/>
+                    <circle cx="225" cy="145" r="4" fill="white"/>
+                    <path d="M185 175 Q200 190 215 175" stroke="white" stroke-width="2" fill="none"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#c084fc"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="140" y="280" fill="#a5f3fc" font-size="14" font-weight="bold">#SamIT</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- services -->
+        <div id="services" class="section">
+            <h2 class="section-title">What I <span class="gradient-text">Deliver</span></h2>
+            <p class="section-sub">user-centric digital experiences with soul & precision</p>
+            <div class="cards-grid">
+                <div class="service-card"><div class="service-icon">💻</div><h3>Frontend Magic</h3><p>React, Vue, interactive UI with smooth animations & responsiveness</p></div>
+                <div class="service-card"><div class="service-icon">⚙️</div><h3>Backend Power</h3><p>Node.js, Python, databases — clean APIs & performance</p></div>
+                <div class="service-card"><div class="service-icon">🎨</div><h3>UI/UX Soul</h3><p>Figma to code, intuitive designs that tell a story</p></div>
+            </div>
+        </div>
+
+        <!-- dynamic counter section -->
+        <div id="stats" class="stats-showcase">
+            <div class="stat-item"><h3 id="expCounter">0</h3><p>Years of code</p></div>
+            <div class="stat-item"><h3 id="langCounter">0</h3><p>Languages spoken</p></div>
+            <div class="stat-item"><h3 id="projectCounter">0</h3><p>Projects shipped</p></div>
+            <div class="stat-item"><h3 id="coffeeCounter">0</h3><p>Coffees / month</p></div>
+        </div>
+
+        <!-- CTA and contact -->
+        <div id="contact" class="cta-section">
+            <h2>Let's create something <span class="gradient-text">legendary</span></h2>
+            <p>From Samarkand to your next big idea — hybrid of tradition and tech.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn" id="contactBtn">📩 iqbolshoh@dev.uz</a>
+                <a href="#" class="btn-outline btn" id="cvBtn">📄 Download inspiration</a>
+            </div>
+            <div style="margin-top: 30px;">
+                <p style="font-size: 0.9rem;">✨ Instagram • GitHub • Telegram • LinkedIn ✨</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Samarqand & IT — creativity meets clean code. From the heart of Uzbekistan 🇺🇿</p>
+        </footer>
+    </div>
+
+    <script>
+        // animated counter on scroll
+        function animateNumbers() {
+            const exp = document.getElementById('expCounter');
+            const lang = document.getElementById('langCounter');
+            const proj = document.getElementById('projectCounter');
+            const coffee = document.getElementById('coffeeCounter');
+            
+            const targetExp = 3;
+            const targetLang = 5;
+            const targetProj = 28;
+            const targetCoffee = 184;
+            
+            let startExp = 0, startLang = 0, startProj = 0, startCoffee = 0;
+            const duration = 1700;
+            const stepTime = 20;
+            const steps = duration / stepTime;
+            let step = 0;
+            
+            const interval = setInterval(() => {
+                step++;
+                if (step <= steps) {
+                    exp.innerText = Math.min(targetExp, Math.floor((step / steps) * targetExp));
+                    lang.innerText = Math.min(targetLang, Math.floor((step / steps) * targetLang));
+                    proj.innerText = Math.min(targetProj, Math.floor((step / steps) * targetProj));
+                    coffee.innerText = Math.min(targetCoffee, Math.floor((step / steps) * targetCoffee));
+                } else {
+                    exp.innerText = targetExp;
+                    lang.innerText = targetLang;
+                    proj.innerText = targetProj;
+                    coffee.innerText = targetCoffee;
+                    clearInterval(interval);
+                }
+            }, stepTime);
+        }
+        
+        // intersection observer for counters
+        const statsSection = document.querySelector('.stats-showcase');
+        let counted = false;
+        
+        function checkCounters() {
+            if (!counted && statsSection.getBoundingClientRect().top < window.innerHeight - 100) {
+                counted = true;
+                animateNumbers();
+            }
+        }
+        
+        window.addEventListener('scroll', checkCounters);
+        window.addEventListener('load', () => {
+            checkCounters();
+            // extra: alert on contact button (demo purpose)
+            document.getElementById('contactBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert("📧 iqbolshoh@dev.uz — copy this email or connect on GitHub!");
+            });
+            document.getElementById('cvBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert("🚀 'Inspirational CV' concept: Full-Stack Dev | 3+ years | 5 languages | Samarkand spirit");
+            });
+        });
+        
+        // smooth scrolling for nav links
+        document.querySelectorAll('.nav-links a, .btn[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const hash = this.getAttribute('href');
+                if (hash && hash !== "#" && hash.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        
+        // additional hover / dynamic greeting in console (just for vibe)
+        console.log("%c✨ Samarqand & IT — From Registan to React ✨", "color: #60a5fa; font-size: 16px; font-weight: bold;");
+        
+        // small interactive: change hero badge text after 3 sec
+        setTimeout(() => {
+            const badge = document.querySelector('.hero-badge');
+            if(badge) badge.innerText = "🚀 Code. Culture. Creativity.";
+        }, 3000);
+    </script>
+</body>
+</html>
